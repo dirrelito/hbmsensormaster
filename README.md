@@ -1,7 +1,26 @@
-# Node.js Hello World
+# Sensor Master Server
 
-This sample demonstrates a tiny Hello World node.js app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web).
+This is a small server to store sensor data.
 
-# Contributing
+# Requirements on the program
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Start server without db preexisting
+Start server with existing db (dont need to check consistency)
+
+
+API to....
+- Dump all data
+- Record one new row
+- Supply Schema for new data
+- provide schema if trying to post malformed data (validate input!s)
+- whitelist endpoints
+- whitelist http methods
+
+# Dev & Test
+
+At this moment I only do end-to-end tests using powershell after spinning up the server.
+They are kept in `e2eTest.ps1`
+
+I have put some good-to-have stuff in the "utils" folder for the time being. They might be nice to have when developing. Not used in actual production.
+
+Hosting is on azure. Deploy via git to get it all up and running! Contect me for info.

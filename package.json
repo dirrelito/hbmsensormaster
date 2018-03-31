@@ -1,10 +1,10 @@
 {
     "name": "app-service-hello-world",
-    "description": "Simple Hello World Node.js sample for Azure App Service",
+    "description": "A simple server for collecting data in a little file based database.",
     "version": "0.0.1",
     "private": true,
-    "license": "MIT",
-    "author": "Microsoft",
+    "license": "CC-BY-SA",
+    "author": "Ludvig Hult",
     "engines": {
         "node": ">=6.9.1"
     },
@@ -12,6 +12,9 @@
         "start": "node index.js"
     },
     "dependencies": {
-        "npm": "^5.8.0"
+        "jsonschema": "^1.2.2",
+        "lodash": "^4.17.5",
+        "npm": "^5.8.0",
+        "sqlite3": "^4.0.0"
     }
 }

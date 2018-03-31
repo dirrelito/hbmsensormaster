@@ -1,13 +1,17 @@
-var http = require('http');
+const http = require('http');
+const fs = require('fs')
+const dbLib = require('./src/dbLib')
+const routes = require('./src/routes')
 
-var server = http.createServer(function(request, response) {
+const setupAndRunServer = () => {
+    const server = http.createServer(routes);
+    const port = process.env.PORT || 1337;
+    server.listen(port);
+    console.log("Server running at http://localhost:%d", port);
+}
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
-
-});
-
-var port = process.env.PORT || 1337;
-server.listen(port);
-
-console.log("Server running at http://localhost:%d", port);
+if(!fs.existsSync(dbLib.DB_NAME)) {
+    dbLib.createDB(setupAndRunServer)
+} else {
+    setupAndRunServer()
+}
