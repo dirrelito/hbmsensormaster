@@ -1,12 +1,12 @@
 {
-    "name": "app-service-hello-world",
+    "name": "hbm-sensors",
     "description": "A simple server for collecting data in a little file based database.",
     "version": "0.0.1",
     "private": true,
     "license": "CC-BY-SA",
     "author": "Ludvig Hult",
     "engines": {
-        "node": ">=6.9.1"
+        "node": ">=8.10.0"
     },
     "scripts": {
         "start": "node index.js"
