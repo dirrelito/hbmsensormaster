@@ -16,7 +16,7 @@ module.exports = (request,response) => {
         //event listener for when the whole body has been recieved
         request.on('end', () => {
             const jsonObj = JSON.parse(data)
-            fs.readFile('./src/sensorMessageSchema.json','utf8',(err,schemaRaw) => {
+            fs.readFile('./src/sensorMessageSchemaV2.json','utf8',(err,schemaRaw) => {
                 if(err) {
                     throw err
                 } else {

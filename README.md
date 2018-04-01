@@ -24,3 +24,7 @@ They are kept in `e2eTest.ps1`
 I have put some good-to-have stuff in the "utils" folder for the time being. They might be nice to have when developing. Not used in actual production.
 
 Hosting is on azure. Deploy via git to get it all up and running! Contect me for info.
+
+# Needed improvements
+
+Possibly, I should add some migration code - or at least add information in the sensor messages about what schema it was submitted under. Also consider providing different versions of the schema when needed.

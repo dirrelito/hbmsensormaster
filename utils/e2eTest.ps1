@@ -1,5 +1,8 @@
-﻿# GET some data
+# GET some data
 Invoke-WebRequest "http://localhost:1337/sensorMessageSchema"
+
+# GET all data
+Invoke-WebRequest "http://localhost:1337/schemas/sensorMessage/v2"
 Invoke-WebRequest "http://localhost:1337/data"
 Invoke-WebRequest "http://localhost:1337/"
 
@@ -10,7 +13,7 @@ Invoke-WebRequest "http://localhost:1337/"
 Invoke-WebRequest "http://localhost:1337/asdfqwerty"
 
 # prohibited methds (at least one example)
-Invoke-WebRequest "http://localhost:1337/sensorMessageSchema" -Method Patch
+Invoke-WebRequest "http://localhost:1337/schemas/sensorMessage/v2" -Method Patch
 Invoke-WebRequest "http://localhost:1337/sensorData"
 
 # POST data
@@ -26,7 +29,16 @@ $goodJson= @{ periodStart= "2018-04-01T13:32:23.123Z";
             unit= "Celsius";
             avg=4;
             stdDev=3.1415;
-            nObs=123
+            nObs=123;
+            sensorId="urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6";
+            sensorLocation="I hallen på Klippan"
             } | ConvertTo-Json
 
 Invoke-WebRequest -uri "http://localhost:1337/sensorData" -Method POST -Body $goodJson
+
+# for testing, postdeploy
+#Invoke-WebRequest -uri "https://hbmsensors.azurewebsites.net/sensorData" -Method POST -Body $goodJson
+
+
+# Make sure temps can be shows
+Start-Process http://localhost:1337/visualization

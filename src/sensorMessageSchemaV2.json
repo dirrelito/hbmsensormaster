@@ -1,0 +1,70 @@
+{
+    "$id": "https://hbmsensors.azurewebsites.net/schemas/sensorMessage/v2",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "A sensor message",
+    "description": "A sensor message, aggregating single observations into a mean, a count and a standard deviation.",
+    "additionalProperties": false,
+    "required": [
+      "periodStart",
+      "periodDurationSeconds",
+      "unit",
+      "avg",
+      "stdDev",
+      "nObs",
+      "sensorId",
+      "sensorLocation"
+    ],
+    "properties": {
+      "periodStart": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The data-and-time in UTC at which the observations started to be recorded."
+      },
+      "periodDurationSeconds": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "The number of whole seconds that the measurment period extended into."
+      },
+      "unit": {
+        "type": "string",
+        "enum": [
+          "Celsius"
+        ],
+        "description": "The unit for the observations."
+      },
+      "avg": {
+        "type": "number",
+        "description": "Average value for the observations made during the period."
+      },
+      "stdDev": {
+        "type": "number",
+        "description": "Standard deviation of the observations. Should be 0 if only one observation is made."
+      },
+      "nObs": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "The number of observations that was made during the period."
+      },
+      "sensorId": {
+        "type": "string",
+        "format": "uri",
+        "title": "Unique identifier for the sensor.",
+        "description": "A name that identifies the sensor. If it is a URL, the sensor should provide som admin GUI on that location. Otherwise, use a URN that can be static over the sensors full lifetime. Use the UUID namespace for computer generated names. Use the hbm:sensor namespace for human readable names. ",
+        "examples": [
+          "urn:hbm:sensor:myLongSensorNameThatWontHaveCollision",
+          "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+        ]
+      },
+      "sensorLocation": {
+        "type": "string",
+        "description": "A textual description of the place that is metered. May be a urn, but doesn't have to.",
+        "examples": [
+          "Låga skåpen i alkoven",
+          "Förråd3",
+          "urn:hbm:location:12837951365",
+          "urn:uuid:3a7102aa-1ab6-40e3-9c10-367ef00e736d"
+        ]
+      }
+    }
+  }
