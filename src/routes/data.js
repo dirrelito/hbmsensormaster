@@ -5,7 +5,8 @@ module.exports = (request,response) => {
         response.writeHead(405,{"Allow": "GET"})
         response.end()
     } else {    
-        response.writeHead(200, {"Content-Type": "application/json"});
+        response.writeHead(200, {"Content-Type": "application/json",
+            'Access-Control-Allow-Origin': '*'});
         d.readAllRows((allRows) => {
             response.end(JSON.stringify(allRows))
         });
