@@ -1,7 +1,10 @@
-﻿# GET all data
+﻿# GET some data
 Invoke-WebRequest "http://localhost:1337/sensorMessageSchema"
 Invoke-WebRequest "http://localhost:1337/data"
 Invoke-WebRequest "http://localhost:1337/"
+
+# GET all data and parse as JSON
+(Invoke-RestMethod -Uri "http://localhost:1337/data" )[0].periodDurationSeconds
 
 # 404
 Invoke-WebRequest "http://localhost:1337/asdfqwerty"

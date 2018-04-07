@@ -25,7 +25,7 @@ const readAllRows = (callback) => {
     const db = new sqlite3.Database(DB_NAME);
     const data = []
     db.each(`SELECT * FROM ${TABLE_NAME}`, function(err, row) {
-        data.push(row)
+        data.push(JSON.parse(row[FIELD_SENSOR_MESSAGE]))
     }).close(() => callback(data));
 }   
 
