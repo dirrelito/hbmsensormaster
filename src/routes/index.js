@@ -6,7 +6,7 @@ const fallback = require('./fallback')
 const visualization = require('./visualization')
 
 module.exports = (request, response) => {
-    if(request.url == '/data') {
+    if(request.url == '/data' || request.url.slice(0,6) == '/data?' ) {
         data(request,response)
     } else if(request.url == '/schemas/sensorMessage/v2') {
         sensorMessageSchema(request,response)
