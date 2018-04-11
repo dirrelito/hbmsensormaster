@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
         <script type="text/javascript">
             const drawChart = () => {
             fetch('data')
@@ -13,8 +13,12 @@
                                 .reduce((a,b) => a + "\n" +b,"DateTime,Temp(avg)")
 
                     g = new Dygraph(
-                        document.getElementById("graphdiv"), // containing div
-                        () => extractedData
+                        document.getElementById("graphdiv"),
+                        () => extractedData,
+                        {
+                            height: 600,
+                            width: 800
+                        }
                     )
                 })
                 .catch(err => console.error(err) )
@@ -23,7 +27,6 @@
         </script>
     </head>
     <body>
-        <!-- The target to inser the graph in -->
         <div id="graphdiv"></div>
     </body>
 </html>

@@ -10,6 +10,7 @@ Endpoints are:
 GET\t/\t\t\t\t=>\tThis page
 GET\t/data\t\t\t\t=>\tAll data in the database in JSON
 GET\t/schema/sensorMessage/v2\t=>\tThe schema that all posted new data must conform to. Post a body with json in utf8. :)
+GET\t/visualization\t\t\t=>\tA graph showing all the data available
 POST\t/sensorData\t\t\t=>\tRecord a single row of JSON`
         )
     }
