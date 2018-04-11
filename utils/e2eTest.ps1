@@ -24,7 +24,7 @@ $badJson= @{  Username    = "Test01";
 
 Invoke-WebRequest -uri "http://localhost:1337/sensorData" -Method POST -Body $badJson
 
-$goodJson= @{ periodStart= "2018-04-01T13:32:23.123Z"; 
+$goodJson= @{ periodStart= "2018-04-05T13:32:23.123Z"; 
             periodDurationSeconds= 1235;
             unit= "Celsius";
             avg=4;
@@ -42,3 +42,15 @@ Invoke-WebRequest -uri "http://localhost:1337/sensorData" -Method POST -Body $go
 
 # Make sure temps can be shows
 Start-Process http://localhost:1337/visualization
+
+
+# extract some limited data (not all rows)
+
+
+$Parameters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
+#$Parameters['periodStartDay'] = '2018-04-01'
+#$Parameters['sensorLocation'] = 'i hallen pa klippan'
+#$Parameters['sensorId'] = 'urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6'
+$Request = [System.UriBuilder]'http://localhost:1337/data'
+$Request.Query = $Parameters.ToString()
+Invoke-RestMethod -Uri $Request.Uri -Method Get # <-- optional, Get is the default
